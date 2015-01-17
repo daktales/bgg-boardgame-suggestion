@@ -884,6 +884,11 @@ if __name__ == '__main__':
         print('Missing Requests lib, use \'pip3 install requests\'')
         exit(1)
     try:
+        import lxml
+    except ImportError:
+        print('Missin lxml lib, use \'pip3 install lxml\'')
+        exit(1)
+    try:
        from bs4 import BeautifulSoup
     except ImportError:
         print('Missing BeautifulSoup lib, use \'pip3 install beautifulsoup4\'')
