@@ -726,6 +726,10 @@ class Master():
                                 if len(self.__game_group) in range(p_min, p_max + 1):
                                     base_to_exp[node].append(path)
 
+                # No game with right players
+                if not base_to_exp[node]:
+                    base_to_exp.pop(node)
+
             return base_to_exp, g.node.keys()
 
         log().info('Game suggestion:')
@@ -746,7 +750,7 @@ class Master():
             new_eval = self.__evaluations.copy()
             for game_id in nodes:
                 if game_id not in graph:
-                    new_eval.pop(game_id)
+                    new_eval.pop(game_id, None)
                 else:
                     new_eval[game_id] = max_scores[game_id]
 
